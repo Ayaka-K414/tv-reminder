@@ -15,7 +15,6 @@ export const Login = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      // ログイン済みの場合、マイページに遷移
     });
 
     return () => unsubscribe(); // クリーンアップ関数を返す
