@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+# 制作背景
+NHK番組検索アプリです。想定しているユーザーは、NHKの番組を視聴したり、録画する習慣のある人です。放送時間が変更になったり、TVの番組表から録画するときにタイトルがうまく取得できず、連続録画できていなかった経験がある方に対して、簡単に検索し事前通知もできるサービスを制作しています。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## URL
+* URL:（未定）
+* ゲストログインボタンから簡単にログインできます。
 
-Currently, two official plugins are available:
+## ER図
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## 使用技術
+* React 19.0.0
+* React DOM 19.0.0
+* React Router DOM 7.2.0
+* Axios 1.7.9
+* TypeScript 5.7.2
+* CSS
+* Firebase 11.3.1（Authentication・Firestore・Hosting・FCM）
+* Vite 6.1.0
+* NHK番組表API
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 機能一覧
+* 
