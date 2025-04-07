@@ -18,10 +18,12 @@ export const Register = () => {
     <>
     {/* ここではNavigateを使用しているが、MyPage.tsxではuseNavigateを使用しています。どちらかに揃えるべきでしょうか？ */}
       {user ? (
-        <Navigate to={"/"} />
+        <Navigate to={"mypage"} />
       ) : (
-        <>
-          <h1>新規登録</h1>
+        <div className="register">
+          <h1>新規登録の方はこちら</h1>
+          <p>メールアドレスとパスワードを入力し、登録するボタンを押してください。</p>
+          <p>ゲストの方は、ゲストログインボタンを押してください。</p>
           <form onSubmit={handleSubmit}>
             <div>
               <label>メールアドレス</label>
@@ -50,7 +52,7 @@ export const Register = () => {
           >
             ゲストログインはこちら
           </button>
-        </>
+        </div>
       )}
     </>
   );

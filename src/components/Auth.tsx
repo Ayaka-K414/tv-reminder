@@ -19,7 +19,7 @@ export const guestLogin = async () => {
 export const logout = async (navigate: (path: string) => void) => {
   try {
     await signOut(auth);
-    navigate("/login");
+    navigate("/");
   } catch (error) {
     if (error instanceof FirebaseError) {
       alert(`${error.code}:${error.message}`);

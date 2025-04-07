@@ -1,0 +1,18 @@
+// カラー変数
+$primary-color: #ff7f62;
+$secondary-color: #ffe082;
+$tertiary-color: #afb6b9;
+$background-color: #e0f6ff;
+$text-color: #333;
+
+// フォント設定
+$font-family: "Arial", sans-serif;
+$base-font-size: 16px;
+
+// レスポンシブ用ブレイクポイント
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+);

@@ -1,4 +1,4 @@
-import { logout } from "./Auth";
+import { logout } from "../components/Auth";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
