@@ -1,0 +1,39 @@
+@use "mixins" as *;
+@use "./variables" as *;
+
+.btn {
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+}
+
+.btn--primary {
+  background-color: $secondary-color;
+}
+
+.btn--primary:hover {
+  opacity: 80%;
+}
+
+.btn--radius {
+  border-radius: 100vh;
+}

@@ -1,0 +1,14 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+
+header {
+    background-color: $primary-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: $text-color-light;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+}

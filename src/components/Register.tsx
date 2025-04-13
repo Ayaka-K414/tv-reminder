@@ -3,7 +3,8 @@ import { guestLogin } from "./Auth";
 import { useAuth } from "../hooks/useAuth";
 import { useForm } from "../hooks/useForm";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../../firebaseConfig"
+import { auth } from "../../firebaseConfig";
+import "../styles/_button.scss";
 
 export const Register = () => {
   const user = useAuth();
@@ -16,18 +17,16 @@ export const Register = () => {
 
   return (
     <>
-    {/* ここではNavigateを使用しているが、MyPage.tsxではuseNavigateを使用しています。どちらかに揃えるべきでしょうか？ */}
+      {/* ここではNavigateを使用しているが、MyPage.tsxではuseNavigateを使用しています。どちらかに揃えるべきでしょうか？ */}
       {user ? (
         <Navigate to={"mypage"} />
       ) : (
         <div className="register">
-          <h1>新規登録の方はこちら</h1>
-          <p>メールアドレスとパスワードを入力し、登録するボタンを押してください。</p>
-          <p>ゲストの方は、ゲストログインボタンを押してください。</p>
+          <h1>新規登録</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>メールアドレス</label>
               <input
+                placeholder="Email"
                 name="email"
                 type="email"
                 value={email}
@@ -35,17 +34,18 @@ export const Register = () => {
               />
             </div>
             <div>
-              <label>パスワード</label>
               <input
+                placeholder="Password"
                 name="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button>登録する</button>
+            <button className="btn btn--primary btn--radius">登録する</button>
           </form>
           <button
+            className="btn btn--primary btn--radius"
             onClick={() => {
               guestLogin();
             }}

@@ -17,15 +17,14 @@ export const Login = () => {
     <>
       {/* ここではNavigateを使用しているが、MyPage.tsxではuseNavigateを使用しています。どちらかに揃えるべきでしょうか？ */}
       {user ? (
-        <Navigate to={"mypage"} />
+        <Navigate to={"home"} />
       ) : (
         <div className="login">
-          <h1>ログインの方はこちら</h1>
-          <p>メールアドレスとパスワードを入力し、ログインボタンを押してください。</p>
+          <h1>ログイン</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>メールアドレス</label>
               <input
+                placeholder="Email"
                 name="email"
                 type="email"
                 value={email}
@@ -33,15 +32,15 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label>パスワード</label>
               <input
+              placeholder="Password"
                 name="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button>ログイン</button>
+            <button className="btn btn--primary btn--radius">ログイン</button>
           </form>
         </div>
       )}

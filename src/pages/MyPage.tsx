@@ -1,16 +1,17 @@
-import { logout } from "../components/Auth";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { Header } from "../components/Header";
+import "../styles/_mypage.scss";
 
 export const MyPage = () => {
   const user = useAuth();
-  const navigate = useNavigate();
 
   return (
     <>
-      <h1>マイページ</h1>
-      <p>{user?.email}</p>
-      <button onClick={() => logout(navigate)}>ログアウト</button>
+      <Header />
+      <div className="mypage-container">
+        <h1>マイページ</h1>
+        {user && user.email ? <p>{user.email}さん</p> : <p>ゲストさん</p>}
+      </div>
     </>
   );
 };

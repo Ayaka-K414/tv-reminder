@@ -2,14 +2,20 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
 html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  font-size: 62.5%;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
@@ -49,13 +55,13 @@ label {
   line-height: 1.1;
 }
 
-/* Balance text wrapping on headings */
+/* Balance text wrapping on headings
 h1,
 h2,
 h3,
 h4 {
   text-wrap: balance;
-}
+} */
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {

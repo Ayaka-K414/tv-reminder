@@ -1,0 +1,20 @@
+@use "./variables" as *;
+
+.program-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid $secondary-color;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: $text-color;
+    p{
+        width: 100%;
+    }
+    .broadcast-time{
+        text-align: center;
+    }
+}

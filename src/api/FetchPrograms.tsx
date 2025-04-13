@@ -1,5 +1,12 @@
 import { useState, useCallback } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AREA_LIST } from "../constants/areaList";
+import { SERVICE_LIST } from "../constants/serviceList";
+import { GENRE_LIST } from "../constants/genreList";
+import "../styles/_card.scss";
+import "../styles/_search.scss";
+import "../styles/_utility.scss";
+import { BroadcastTime } from "../components/BroadcastTime";
 
 const API_KEY: string = import.meta.env.VITE_NHK_API_KEY;
 
@@ -49,58 +56,92 @@ export const FetchPrograms = () => {
   }, [area, service, genre, date]);
 
   return (
-    <div>
-      <label htmlFor="area">地域：</label>
-      <select name="area" id="area" onChange={(e) => setArea(e.target.value)}>
-        <option value="">選択してください</option>
-        <option value="130">東京</option>
-        <option value="140">大阪</option>
-      </select>
-      <label htmlFor="service">サービス：</label>
-      <select
-        name="service"
-        id="service"
-        onChange={(e) => setService(e.target.value)}
-      >
-        <option value="">選択してください</option>
-        <option value="g1">NHK総合1</option>
-        <option value="g2">NHK総合2</option>
-        <option value="e1">NHKEテレ1</option>
-      </select>
-      <label htmlFor="genre">ジャンル：</label>
-      <select
-        name="genre"
-        id="genre"
-        onChange={(e) => setGenre(e.target.value)}
-      >
-        <option value="">選択してください</option>
-        <option value="0000">ニュース／報道 (定時・総合)</option>
-        <option value="0100">スポーツ (スポーツニュース)</option>
-        <option value="0700">アニメ／特撮 (国内アニメ)</option>
-      </select>
-      <label htmlFor="date">放送日：</label>
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
+    <div className="search">
+      <div className="search-container">
+        <div className="search-container-inner">
+          <div className="search-select">
+            <label htmlFor="area"><span className="mgr-3rem">地域</span>：</label>
+            <select
+              name="area"
+              id="area"
+              value={area}
+              onChange={(e) => setArea(e.target.value)}
+            >
+              <option value="">選択してください</option>
+              {AREA_LIST.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <button
-        onClick={fetchData}
-        disabled={loading || !area || !service || !genre || !date}
-      >
-        {loading ? "検索中" : "検索"}
-      </button>
+          <div className="search-select">
+            <label htmlFor="service">サービス：</label>
+            <select
+              name="service"
+              id="service"
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+            >
+              <option value="">選択してください</option>
+              {SERVICE_LIST.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="search-select">
+            <label htmlFor="genre">ジャンル：</label>
+            <select
+              name="genre"
+              id="genre"
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+            >
+              <option value="">選択してください</option>
+              {GENRE_LIST.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="search-select">
+            <label htmlFor="date"><span className="mgr-2rem">放送日</span>：</label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+
+          <div className="search-button">
+            <button
+              className="btn btn--primary btn--radius"
+              onClick={fetchData}
+              disabled={loading || !area || !service || !genre || !date}
+            >
+              {loading ? "検索中" : "検索"}
+            </button>
+          </div>
+        </div>
+      </div>
 
       {error && <p className="error-message">{error}</p>}
       {programs.map((program, index) => (
-        <div className="programCardContainer" key={index}>
-          <p>{program.title}</p>
-          <p>{program.start_time}</p>
-          <p>{program.end_time}</p>
-          <p>{program.subtitle}</p>
-          <p>{program.content}</p>
-          <p>{program.act}</p>
+        <div className="program-card-container" key={index}>
+          <h3>{program.title}</h3>
+          <BroadcastTime
+            startIso={program.start_time}
+            endIso={program.end_time}
+          />
+          {program.subtitle && <p>{program.subtitle}</p>}
+          {program.content && <p>{program.content}</p>}
+          {/* {program.act && <p>{program.act}</p>} */}
         </div>
       ))}
     </div>
