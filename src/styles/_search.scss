@@ -1,0 +1,16 @@
+@use "mixins" as *;
+@use "./variables" as *;
+
+.search {
+  .search-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+    .search-select {
+      margin: 0.5rem 0;
+    }
+    .search-button {
+      text-align: center;
+    }
+  }
+}

@@ -1,63 +1,48 @@
-import { useState, useEffect } from "react";
-import {
-  onAuthStateChanged,
-  User,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../../firebaseConfig";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import { useForm } from "../hooks/useForm";
+import { auth } from "../../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export const Login = () => {
-  const [loginEmail, setLoginEmail] = useState<string>("");
-  const [loginPassword, setLoginPassword] = useState<string>("");
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe(); // クリーンアップ関数を返す
-  }, []);
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-    } catch (error) {
-      alert(`${error}`);
+  const user = useAuth();
+  // 以下のuseFormはAuth.tsxに移設して認証機能としてまとめるべきでしょうか？
+  const { handleSubmit, email, setEmail, password, setPassword } = useForm(
+    (email, password) => {
+      return signInWithEmailAndPassword(auth, email, password);
     }
-  };
+  );
 
   return (
     <>
+      {/* ここではNavigateを使用しているが、MyPage.tsxではuseNavigateを使用しています。どちらかに揃えるべきでしょうか？ */}
       {user ? (
-        <Navigate to={"/"} />
+        <Navigate to={"home"} />
       ) : (
-        <>
-          <h1>ログインページ</h1>
+        <div className="login">
+          <h1>ログイン</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>メールアドレス</label>
               <input
+                placeholder="Email"
                 name="email"
                 type="email"
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
-              <label>パスワード</label>
               <input
+              placeholder="Password"
                 name="password"
                 type="password"
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button>ログイン</button>
+            <button className="btn btn--primary btn--radius">ログイン</button>
           </form>
-        </>
+        </div>
       )}
     </>
   );

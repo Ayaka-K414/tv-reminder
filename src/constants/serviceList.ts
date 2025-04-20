@@ -1,0 +1,18 @@
+export const SERVICE_LIST = [
+  { value: "g1", label: "NHK 総合1" },
+  { value: "g2", label: "NHK 総合2" },
+  { value: "e1", label: "NHK Eテレ1" },
+  { value: "e2", label: "NHK Eテレ2" },
+  { value: "e3", label: "NHK Eテレ3" },
+  { value: "e4", label: "NHK ワンセグ2" },
+  { value: "s1", label: "NHK BS" },
+  { value: "s2", label: "NHK BS(102ch)" },
+  { value: "s5", label: "NHK BSプレミアム4K" },
+  { value: "s6", label: "NHK BS8K" },
+  { value: "r1", label: "NHK ラジオ第1" },
+  { value: "r2", label: "NHK ラジオ第2" },
+  { value: "r3", label: "NHK FM" },
+  { value: "n1", label: "NHK ネットラジオ第1" },
+  { value: "n2", label: "NHK ネットラジオ第2" },
+  { value: "n3", label: "NHK ネットラジオFM" },
+];
